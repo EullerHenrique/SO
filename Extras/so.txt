@@ -1,0 +1,60 @@
+System call
+
+"Uma chamada de sistema é o mecanismo porgramático pelo qual um programa de computador solicita um serviço do núcleo do sistema operacional sobre o qual ele está sendo executado."
+
+Organização do kernel
+
+    Monolitico: Os subsistemas estão fortemente acoplados
+                Ex: O código de duas rotinas compartilha uma variável global
+                Ex: Uso de go to
+    Em camadas: Os subistemas não estão fortemente acoplados
+                Ex: Uso de funções
+
+    Microkernel: Somente o subsistema mais crítico (mais próximo do hardware) faz parte do kernel
+                Os outros subsistemas são rotinas independentes do kernel
+
+A organização do kernel do linux é:
+    Principalmente em camadas
+    Um pouco monolitica
+    Um pouco microkernel
+
+
+Interface de system calls
+
+
+Programa em C invocando printf(...) que por sua vez chama a system call write
+
+#include <stdio.h>
+int main(){
+
+    printf("Greetings");
+
+    return 0;    
+
+}
+
+System Calls: Padronização
+    
+    A maioria das system callsusadas em sistemas UNIX (ou UNIX-like) estão definidas no padrão POSIX (Portable Operating System Interface for Unix)
+
+    - A família de padrões POSIX é formalmente conhecida como IEEE 1003
+    - Equivale ao padrão internacional ISO/IEC 9945
+
+    No Linux podemos ver as system calls na seção 2 do manual online (man pages)
+        man 2 system_call
+        - ex. # man 2 exit
+        - man syscalls -apresenta todas as chamadas de sistema
+
+
+System Calls vs. Rotinas de Biblioteca
+    No UNIX muitas system callssão encapsuladas por rotinas de biblioteca–C Library (libc, glibc, ...)
+    Exemplo:
+    - void _exit(int status); -system call–void exit(int status);   
+    -rotina de biblioteca 
+    Algumas diferenças: 
+    - _exit não chama qualquer função registrada com atexit()ou on_exit().
+    -_exit não fecha descritores de arquivos abertos 
+    - ....
+
+
+    

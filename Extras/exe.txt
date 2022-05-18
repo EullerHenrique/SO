@@ -1,0 +1,9 @@
+Execução de um programa
+
+Primeira etapa:	O compiler (realiza a compilação) transforma o código em linguagem C (.c) para um código em linguagem Assembly (.s)
+
+Segunda etapa: O assembler (realiza a montagem) transforma o código em linguagem assembly para um código em linguagem de máquina não executável (.o)
+	
+Terceira etapa: O linker (realiza a ligação) liga todos os códigos .o (Como o código utiliza bibliotecas, as funções externas precisam ser compiladas, montadas e linkadas com o programa principal) e gera o código em linguagem de máquina executável(.exe)
+
+Quarta etapa: O código .exe é executado
